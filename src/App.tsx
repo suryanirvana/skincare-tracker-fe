@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { CustomTypography } from './components/typography/typography';
+
+import "react-multi-carousel/lib/styles.css";
+
+import dayjs from 'dayjs';
+import { CustomCarousel, SkincareTypes } from './components/carousel/carousel';
+import { SkincareType } from './components/carousel/carousel.item';
 
 function App() {
+  const hour = dayjs().hour()
+  let dayOrNight = ""
+
+  if(hour >= 7 && hour <=18) {
+    dayOrNight = "day-time"
+  } else if (hour <= 6 || hour >= 19) {
+    dayOrNight = "night-time"
+  }
+
+  //useeffect
+  
+  let skincareTypes: SkincareType[] = []
+  const skincareTypeDictionary = {
+    1: "Face Wash",
+    2: "Hydrating Toner",
+    3: "Eye Cream",
+    4: "Moisturizer",
+    5: "Sunscreen"
+  }
+
+  Object.entries(skincareTypeDictionary).forEach(
+    ([key, value]) => {
+      const skincareType: SkincareType = {
+        skincareTypeStep: key,
+        skincareTypeName: value
+      }
+      skincareTypes.push(skincareType)
+    }
+  )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CustomTypography dayOrNight={dayOrNight}/>
+      <CustomCarousel skincareType={skincareTypes}/>
     </div>
   );
 }
+
+
 
 export default App;
