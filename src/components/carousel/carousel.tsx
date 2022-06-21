@@ -1,5 +1,5 @@
 import Carousel from "react-multi-carousel";
-import { BasicCard, SkincareType } from "./carousel.item";
+import { BasicCard, SkincareData } from "./carousel.item";
 
 import './carousel.css'
 
@@ -23,11 +23,11 @@ const responsive = {
     }
 };
 
-export interface SkincareTypes {
-  skincareType: SkincareType[]
+export interface SkincareDatas {
+  skincareData: SkincareData[]
 }
 
-export const CustomCarousel = ({skincareType}:SkincareTypes) => {
+export const CustomCarousel = ({skincareData}:SkincareDatas) => {
     return (
         <div className="containerc">
             <Carousel
@@ -43,8 +43,8 @@ export const CustomCarousel = ({skincareType}:SkincareTypes) => {
                 centerMode={true}
                 focusOnSelect={true}
             >
-              {skincareType.map(({ skincareTypeStep, skincareTypeName }) => (
-                <BasicCard skincareTypeStep={skincareTypeStep} skincareTypeName={skincareTypeName}/>
+              {skincareData.map(({ skincareStep, skincareName, skincareType, skincareBrand }) => (
+                <BasicCard skincareStep={skincareStep} skincareName={skincareName} skincareType={skincareType} skincareBrand={skincareBrand}/>
               ))}
         </Carousel>
       </div>

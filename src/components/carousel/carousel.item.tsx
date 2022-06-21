@@ -4,12 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
  
-export interface SkincareType {
-  skincareTypeStep: string
-  skincareTypeName: string
+export interface SkincareData {
+  skincareStep: number
+  skincareName: string
+  skincareType: string
+  skincareBrand: string
 }
 
-export const BasicCard = ({skincareTypeStep, skincareTypeName}:SkincareType) => {
+export const BasicCard = ({skincareStep, skincareName, skincareType, skincareBrand}:SkincareData) => {
   return (
       <Box mt={5} mb={5} mr={0} p={0}>
         <Card sx={{borderRadius: '20px', marginRight: '10px', width: '200px', height: '200px'}}>
@@ -22,10 +24,10 @@ export const BasicCard = ({skincareTypeStep, skincareTypeName}:SkincareType) => 
               alignItems: 'center'}}
             >
               <Typography variant="h5" fontWeight={700}>
-                Step {skincareTypeStep}
+                Step {skincareStep}
               </Typography>
               <Typography variant="h5" align="center" sx={{wordWrap: "break-word"}}>
-                {skincareTypeName}
+                {skincareType}
               </Typography>
             </CardContent>
           </CardActionArea>

@@ -4,44 +4,38 @@ import { CustomTypography } from './components/typography/typography';
 import "react-multi-carousel/lib/styles.css";
 
 import dayjs from 'dayjs';
-import { CustomCarousel, SkincareTypes } from './components/carousel/carousel';
-import { SkincareType } from './components/carousel/carousel.item';
+import { CustomCarousel } from './components/carousel/carousel';
+import { SkincareData } from './components/carousel/carousel.item';
+import RetrieveSkincareData from './service/skincare.read';
 
 function App() {
-  const hour = dayjs().hour()
+  const currentDateTime = dayjs()
   let dayOrNight = ""
 
-  if(hour >= 7 && hour <=18) {
+  if(currentDateTime.hour() >= 7 && currentDateTime.hour() <=18) {
     dayOrNight = "day-time"
-  } else if (hour <= 6 || hour >= 19) {
+  } else if (currentDateTime.hour() <= 6 || currentDateTime.hour() >= 19) {
     dayOrNight = "night-time"
   }
-
-  //useeffect
   
-  let skincareTypes: SkincareType[] = []
-  const skincareTypeDictionary = {
-    1: "Face Wash",
-    2: "Hydrating Toner",
-    3: "Eye Cream",
-    4: "Moisturizer",
-    5: "Sunscreen"
-  }
+  let skincareDataArray: SkincareData[] = []
+  const skincareDataResult = RetrieveSkincareData(currentDateTime)
 
-  Object.entries(skincareTypeDictionary).forEach(
-    ([key, value]) => {
-      const skincareType: SkincareType = {
-        skincareTypeStep: key,
-        skincareTypeName: value
-      }
-      skincareTypes.push(skincareType)
+  for(let i = 1; i < Object.keys(skincareDataResult).length+1; i++) {
+    const data = skincareDataResult[i.toString()]
+    const skincareData: SkincareData = {
+      skincareStep: i,
+      skincareName: data['skincareName'],
+      skincareType: data['skincareTypeID']['skincareTypeName'],
+      skincareBrand: data['skincareBrandID']['skincareBrandName']
     }
-  )
+    skincareDataArray.push(skincareData)
+  }
 
   return (
     <div className="App">
       <CustomTypography dayOrNight={dayOrNight}/>
-      <CustomCarousel skincareType={skincareTypes}/>
+      <CustomCarousel skincareData={skincareDataArray}/>
     </div>
   );
 }
