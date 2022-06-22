@@ -11,10 +11,21 @@ export interface SkincareData {
   skincareBrand: string
 }
 
-export const BasicCard = ({skincareStep, skincareName, skincareType, skincareBrand}:SkincareData) => {
+// onClick change state to open modal to true, kirim data ke modal
+
+export const CustomCard = ({skincareStep, skincareName, skincareType, skincareBrand}:SkincareData) => {
   return (
-      <Box mt={5} mb={5} mr={0} p={0}>
-        <Card sx={{borderRadius: '20px', marginRight: '10px', width: '200px', height: '200px'}}>
+      <Box mb={5} mr={0} p={0}>
+        <Card 
+          sx={{
+            borderRadius: '20px',
+            marginRight: '100px',
+            width: '200px',
+            height: '200px',
+            "&:hover": { transform: "scale(1.2)"},
+            transition: "transform 0.2s"
+          }}
+        >
           <CardActionArea>
             <CardContent sx={{
               height: '200px',

@@ -7,6 +7,18 @@ import dayjs from 'dayjs';
 import { CustomCarousel } from './components/carousel/carousel';
 import { SkincareData } from './components/carousel/carousel.item';
 import RetrieveSkincareData from './service/skincare.read';
+import { Paper } from '@mui/material';
+
+import map from "lodash/map";
+import range from "lodash/range";
+
+const Container = () => {
+  return (
+    <div style={{ height: "2300px", width: "514px", margin: "16px" }}>
+      <Paper style={{ height: "100%", width: "514px" }}>Hello</Paper>
+    </div>
+  );
+};
 
 function App() {
   const currentDateTime = dayjs()
@@ -36,6 +48,16 @@ function App() {
     <div className="App">
       <CustomTypography dayOrNight={dayOrNight}/>
       <CustomCarousel skincareData={skincareDataArray}/>
+    </div>
+  );
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
+        {map(range(10), _ => (
+          <Container />
+        ))}
+      </div>
     </div>
   );
 }

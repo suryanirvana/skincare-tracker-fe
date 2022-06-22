@@ -14,7 +14,7 @@ export const CustomTypography = ({dayOrNight}:Time) => {
                 HI THERE!
             </Typography>
             <Typography variant="h5">
-                today is
+                today is Wendy you got me feeling like a psycho psycho
             </Typography>
             <Typography variant="h2" marginTop={2} fontWeight={'bold'} color="#4EABD2">
                 <Clock format={'dddd, MMMM Do YYYY h:mm:ss'} ticking={true} timezone={'Australia/Queensland'} />

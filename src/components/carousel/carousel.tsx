@@ -1,5 +1,4 @@
-import Carousel from "react-multi-carousel";
-import { BasicCard, SkincareData } from "./carousel.item";
+import { CustomCard, SkincareData } from "./carousel.item";
 
 import './carousel.css'
 
@@ -29,24 +28,10 @@ export interface SkincareDatas {
 
 export const CustomCarousel = ({skincareData}:SkincareDatas) => {
     return (
-        <div className="containerc">
-            <Carousel
-                swipeable={true}
-                draggable={true}
-                responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
-                autoPlaySpeed={0}
-                keyBoardControl={true}
-                itemClass="carousel-item-padding-40-px"
-                className="carousel"
-                removeArrowOnDeviceType={["superlargedesktop", "desktop", "tablet", "mobile"]}
-                centerMode={true}
-                focusOnSelect={true}
-            >
-              {skincareData.map(({ skincareStep, skincareName, skincareType, skincareBrand }) => (
-                <BasicCard skincareStep={skincareStep} skincareName={skincareName} skincareType={skincareType} skincareBrand={skincareBrand}/>
-              ))}
-        </Carousel>
-      </div>
+      <div className="container1"><div className="container2">
+        {skincareData.map(({ skincareStep, skincareName, skincareType, skincareBrand }) => (
+          <CustomCard skincareStep={skincareStep} skincareName={skincareName} skincareType={skincareType} skincareBrand={skincareBrand}/>
+        ))}
+      </div></div>
     )
 }

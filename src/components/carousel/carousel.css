@@ -1,7 +1,13 @@
-.containerc {
-    /* height: 50vh; */
+.container1 {
+    overflow: hidden;
+    height: 300px;
+}
+
+.container2 {
+    padding: 2vw 10vw;
+    align-items: center;
+    height: 350px;
+    overflow: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 2vh;
+    width: 100%;
 }
