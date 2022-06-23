@@ -1,0 +1,4 @@
+.MuiModal-root {
+    backdrop-filter: blur(3px);
+    background-color: rgba(0,0,30,0.4);
+}

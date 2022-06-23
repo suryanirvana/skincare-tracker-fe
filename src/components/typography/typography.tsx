@@ -1,11 +1,10 @@
-import Typography from '@mui/material/Typography';
 import Clock from 'react-live-clock';
 
-import './typography.css'
+import Typography from '@mui/material/Typography';
 
-interface Time {
-    dayOrNight: string
-}
+import { Time } from '../../types/time';
+
+import './typography.css'
 
 export const CustomTypography = ({dayOrNight}:Time) => {
     return(

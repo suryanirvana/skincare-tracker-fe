@@ -1,4 +1,6 @@
-import { CustomCard, SkincareData } from "./carousel.item";
+import { CustomCard } from "./carousel.item";
+
+import { SkincareDatas } from "../../types/skincare";
 
 import './carousel.css'
 
@@ -22,16 +24,14 @@ const responsive = {
     }
 };
 
-export interface SkincareDatas {
-  skincareData: SkincareData[]
-}
-
 export const CustomCarousel = ({skincareData}:SkincareDatas) => {
     return (
-      <div className="container1"><div className="container2">
+      <div className="container1">
+        <div className="container2">
         {skincareData.map(({ skincareStep, skincareName, skincareType, skincareBrand }) => (
           <CustomCard skincareStep={skincareStep} skincareName={skincareName} skincareType={skincareType} skincareBrand={skincareBrand}/>
         ))}
-      </div></div>
+        </div>
+      </div>
     )
 }

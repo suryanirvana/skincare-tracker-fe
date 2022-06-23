@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
 import { Dayjs } from 'dayjs'
+import { useState, useEffect } from 'react'
 
 export default function RetrieveSkincareData(currentDateTime: Dayjs) {
   const [initialState, setInitialState] = useState([])
